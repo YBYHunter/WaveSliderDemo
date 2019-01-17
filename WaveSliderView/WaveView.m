@@ -10,8 +10,6 @@
 
 @interface WaveView ()
 
-@property (nonatomic,assign) CGFloat phaseShift;//相移
-
 @property (nonatomic,assign) CGFloat phase;     //阶段
 
 @property (nonatomic, strong) dispatch_source_t timer;
@@ -27,12 +25,11 @@
 {
     self = [super init];
     if (self) {
-//        [self context];
-        self.phaseShift = -0.15;    //相移
+        self.phaseShift = -0.05;    //相移
         self.amplitude = 10.0f;     //振幅
         self.density = 5.0f;        //密度
         self.frequency = 1.5;       //频率
-        self.primaryWaveLineWidth = 3.0; //线的宽
+        self.primaryWaveLineWidth = 2.0; //线的宽
         self.primaryWaveLineColor = [UIColor whiteColor];
     }
     return self;
@@ -64,9 +61,12 @@
     [self.backgroundColor set];
     CGContextFillRect(context, self.bounds);
     
-    UIColor * waveColor = self.primaryWaveLineColor;
+    UIColor *waveColor = self.primaryWaveLineColor;
     CGFloat strokeLineWidth = self.primaryWaveLineWidth;
     CGContextSetLineWidth(context, strokeLineWidth);
+    CGContextSetLineCap(context, kCGLineCapRound);
+    CGContextSetLineJoin(context, kCGLineJoinRound);
+    
     CGFloat halfHeight = CGRectGetHeight(self.bounds) / 2.0f;
     CGFloat width = CGRectGetWidth(self.bounds);
     CGFloat mid = width / 2.0f;

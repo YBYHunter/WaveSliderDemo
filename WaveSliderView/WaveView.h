@@ -16,6 +16,8 @@
 
 @property (nonatomic,assign) CGFloat density;   //密度
 
+@property (nonatomic,assign) CGFloat phaseShift;//相位
+
 @property (nonatomic,assign) CGFloat primaryWaveLineWidth;  //线的宽
 
 @property (nonatomic,strong) UIColor * primaryWaveLineColor;//线的颜色
